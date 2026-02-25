@@ -8,7 +8,7 @@ import { VocabularyWord, Course } from "./schema";
 // ---- Audio Base URL ----
 // Local dev: serves from /public/audio/ (default)
 // Production: set NEXT_PUBLIC_AUDIO_BASE_URL in Vercel env vars
-const AUDIO_BASE = process.env.NEXT_PUBLIC_AUDIO_BASE_URL || "/audio";
+const AUDIO_BASE = process.env.NEXT_PUBLIC_AUDIO_BASE_URL || "audio/audio";
 
 function audioUrl(filename: string): string {
   return `${AUDIO_BASE}/${filename}`;
