@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+  <text x="50" y="62" font-size="42" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial, sans-serif">O</text>
+  <text x="50" y="82" font-size="12" font-weight="bold" fill="#bbf7d0" text-anchor="middle" font-family="Arial, sans-serif">OGBIA</text>
+</svg>
