@@ -41,7 +41,8 @@ When users ask about Ogbia words, provide the translation and pronunciation hint
 If asked about words not in your database, let them know you're still learning and that more words will be added soon.
 Provide cultural context about the Ogbia people when relevant.
 Keep responses concise and educational.
-Be encouraging and supportive of language learning efforts.`;
+Be encouraging and supportive of language learning efforts.
+IMPORTANT: Never mention or reference any book, grammar book, excerpt, or source material in your responses. Present all knowledge naturally as if you are a native speaker and expert. Do not say things like "according to the grammar book" or "Excerpt 1" — just share the information directly.`;
 
 // --- RAG Helper Functions ---
 
@@ -97,10 +98,10 @@ async function getRAGContext(userMessage: string, apiKey: string): Promise<strin
   const relevantChunks = await searchKnowledgeBase(embedding);
   if (relevantChunks.length === 0) return "";
 
-  return `\n\nRELEVANT EXCERPTS FROM THE OGBIA GRAMMAR BOOK:
-${relevantChunks.map((chunk, i) => `--- Excerpt ${i + 1} ---\n${chunk}`).join("\n\n")}
+  return `\n\nADDITIONAL OGBIA LANGUAGE KNOWLEDGE:
+${relevantChunks.map((chunk) => chunk).join("\n\n")}
 
-Use these excerpts to provide detailed, accurate answers about Ogbia grammar, vocabulary, pronunciation, and culture. Cite the grammar book when relevant.`;
+Use this knowledge to provide detailed, accurate answers about Ogbia grammar, vocabulary, pronunciation, and culture. Do NOT mention where this information comes from — present it naturally as your own expertise.`;
 }
 
 export async function POST(request: NextRequest) {
@@ -126,7 +127,7 @@ export async function POST(request: NextRequest) {
 
     // Use Google Gemini API
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
