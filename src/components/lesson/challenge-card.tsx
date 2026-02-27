@@ -7,6 +7,7 @@
 import { Challenge, ChallengeOption } from "@/lib/schema";
 import { AudioButton } from "@/components/ui/audio-button";
 import { Volume2 } from "lucide-react";
+import { useEffect } from "react";
 
 interface ChallengeCardProps {
   challenge: Challenge;
@@ -23,6 +24,17 @@ export function ChallengeCard({
   onSelect,
   disabled,
 }: ChallengeCardProps) {
+  // Auto-play correct answer audio when answered correctly
+  useEffect(() => {
+    if (status === "correct" && selectedOption?.audioSrc) {
+      const timer = setTimeout(() => {
+        const audio = new Audio(selectedOption.audioSrc!);
+        audio.play().catch(() => {});
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [status, selectedOption]);
+
   return (
     <div className="w-full">
       {/* Question */}
@@ -41,16 +53,17 @@ export function ChallengeCard({
             <p className="text-lg font-bold text-slate-700">
               {challenge.question}
             </p>
-            {challenge.audioSrc && (
+            {status === "correct" && challenge.audioSrc && (
               <AudioButton src={challenge.audioSrc} size="sm" />
             )}
           </div>
         ) : (
+          /* SELECT type */
           <div className="flex items-center gap-3">
             <p className="text-lg font-bold text-slate-700">
               {challenge.question}
             </p>
-            {challenge.audioSrc && (
+            {status === "correct" && challenge.audioSrc && (
               <AudioButton src={challenge.audioSrc} size="sm" />
             )}
           </div>
@@ -82,6 +95,13 @@ export function ChallengeCard({
             bgColor = "bg-sky-50";
           }
 
+          // Only show audio icon on the correct option after answering
+          const showAudio =
+            option.audioSrc &&
+            challenge.type !== "ASSIST" &&
+            status !== "none" &&
+            isCorrect;
+
           return (
             <button
               key={option.id}
@@ -95,7 +115,7 @@ export function ChallengeCard({
                 ${status === "wrong" && isSelected ? "animate-shake" : ""}
               `}
             >
-              {option.audioSrc && challenge.type !== "ASSIST" && (
+              {showAudio && (
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
