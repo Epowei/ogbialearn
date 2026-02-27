@@ -24,7 +24,7 @@ export function ChallengeCard({
   onSelect,
   disabled,
 }: ChallengeCardProps) {
-  // Auto-play correct answer audio when answered correctly
+  // Auto-play correct answer audio when answered (correct or wrong)
   useEffect(() => {
     if (status === "correct" && selectedOption?.audioSrc) {
       const timer = setTimeout(() => {
@@ -33,7 +33,18 @@ export function ChallengeCard({
       }, 300);
       return () => clearTimeout(timer);
     }
-  }, [status, selectedOption]);
+    if (status === "wrong") {
+      // Find the correct option and play its audio
+      const correctOption = challenge.options.find((o) => o.correct);
+      if (correctOption?.audioSrc) {
+        const timer = setTimeout(() => {
+          const audio = new Audio(correctOption.audioSrc!);
+          audio.play().catch(() => {});
+        }, 600);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [status, selectedOption, challenge.options]);
 
   return (
     <div className="w-full">
@@ -63,7 +74,7 @@ export function ChallengeCard({
             <p className="text-lg font-bold text-slate-700">
               {challenge.question}
             </p>
-            {status === "correct" && challenge.audioSrc && (
+            {status !== "none" && challenge.audioSrc && (
               <AudioButton src={challenge.audioSrc} size="sm" />
             )}
           </div>
