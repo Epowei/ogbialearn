@@ -9,7 +9,7 @@ export interface VocabularyWord {
   english: string;
   ogbia: string;
   audioSrc: string; // path relative to /public
-  category: "body" | "household" | "greeting" | "nature" | "food" | "general";
+  category: "body" | "household" | "greeting" | "nature" | "food" | "general" | "animal" | "color";
   imageSrc?: string;
 }
 

@@ -37,6 +37,38 @@ export const vocabulary: VocabularyWord[] = [
   { id: "word_plate", english: "Plate", ogbia: "Èfèrè", audioSrc: audioUrl("plate.mp3"), category: "household" },
   { id: "word_pot", english: "Pot", ogbia: "O'gbèlè", audioSrc: audioUrl("pot.mp3"), category: "household" },
   { id: "word_spoon", english: "Spoon", ogbia: "Ìngìasì", audioSrc: audioUrl("spoon.mp3"), category: "household" },
+
+  // Animals
+  { id: "word_bird", english: "Bird", ogbia: "ẹnùrù", audioSrc: audioUrl("animals/bird.mp3"), category: "animal" },
+  { id: "word_butterfly", english: "Butterfly", ogbia: "òbhòrìbhò", audioSrc: audioUrl("animals/butterfly.mp3"), category: "animal" },
+  { id: "word_cat", english: "Cat", ogbia: "òlògbò", audioSrc: audioUrl("animals/cat.mp3"), category: "animal" },
+  { id: "word_cow", english: "Cow", ogbia: "òvì", audioSrc: audioUrl("animals/cow.mp3"), category: "animal" },
+  { id: "word_dog", english: "Dog", ogbia: "àghòḅò", audioSrc: audioUrl("animals/dog.mp3"), category: "animal" },
+  { id: "word_elephant", english: "Elephant", ogbia: "òbẹnàm", audioSrc: audioUrl("animals/elephant.mp3"), category: "animal" },
+  { id: "word_female_goat", english: "Female Goat", ogbia: "ẹzé", audioSrc: audioUrl("animals/female_goat.mp3"), category: "animal" },
+  { id: "word_fish", english: "Fish", ogbia: "ènà", audioSrc: audioUrl("animals/fish.mp3"), category: "animal" },
+  { id: "word_fly", english: "Fly", ogbia: "ẹgì", audioSrc: audioUrl("animals/fly.mp3"), category: "animal" },
+  { id: "word_lizard", english: "Lizard", ogbia: "àdùgbègbèm", audioSrc: audioUrl("animals/lizard.mp3"), category: "animal" },
+  { id: "word_male_goat", english: "Male Goat", ogbia: "èkpè", audioSrc: audioUrl("animals/male_goat.mp3"), category: "animal" },
+  { id: "word_millipede", english: "Millipede", ogbia: "ẹnómòtì", audioSrc: audioUrl("animals/millipede.mp3"), category: "animal" },
+  { id: "word_monkey", english: "Monkey", ogbia: "ọbù", audioSrc: audioUrl("animals/monkey.mp3"), category: "animal" },
+  { id: "word_rat", english: "Rat", ogbia: "òkàtà", audioSrc: audioUrl("animals/rat.mp3"), category: "animal" },
+  { id: "word_sheep", english: "Sheep", ogbia: "ọnáánà", audioSrc: audioUrl("animals/sheep.mp3"), category: "animal" },
+  { id: "word_snake", english: "Snake", ogbia: "ọkárábhábhár", audioSrc: audioUrl("animals/snake.mp3"), category: "animal" },
+  { id: "word_tortoise", english: "Tortoise", ogbia: "àḍùùlè", audioSrc: audioUrl("animals/tortoise.mp3"), category: "animal" },
+
+  // Colors
+  { id: "word_ash", english: "Ash", ogbia: "àḍiènẹḅúrú", audioSrc: audioUrl("colors/ash.mp3"), category: "color" },
+  { id: "word_black", english: "Black", ogbia: "ọzúzú", audioSrc: audioUrl("colors/black.mp3"), category: "color" },
+  { id: "word_blue", english: "Blue", ogbia: "àbulù", audioSrc: audioUrl("colors/blue.mp3"), category: "color" },
+  { id: "word_brown", english: "Brown", ogbia: "yèryèr", audioSrc: audioUrl("colors/brown.mp3"), category: "color" },
+  { id: "word_green", english: "Green", ogbia: "nyíù", audioSrc: audioUrl("colors/green.mp3"), category: "color" },
+  { id: "word_orange", english: "Orange", ogbia: "òlògẹlélényidè", audioSrc: audioUrl("colors/orange.mp3"), category: "color" },
+  { id: "word_pink", english: "Pink", ogbia: "àḍiénọgúrú", audioSrc: audioUrl("colors/pink.mp3"), category: "color" },
+  { id: "word_purple", english: "Purple", ogbia: "ọḅáḅám-àbùlù", audioSrc: audioUrl("colors/purple.mp3"), category: "color" },
+  { id: "word_red", english: "Red", ogbia: "ọḅáḅám", audioSrc: audioUrl("colors/red.mp3"), category: "color" },
+  { id: "word_white", english: "White", ogbia: "ọḅáḅá", audioSrc: audioUrl("colors/white.mp3"), category: "color" },
+  { id: "word_yellow", english: "Yellow", ogbia: "ạḅekẹ̀", audioSrc: audioUrl("colors/yellow.mp3"), category: "color" },
 ];
 
 // Helper: get random wrong options from vocabulary
@@ -123,6 +155,8 @@ function buildListeningChallenge(word: VocabularyWord, order: number, lessonId: 
 
 const bodyWords = vocabulary.filter((w) => w.category === "body");
 const householdWords = vocabulary.filter((w) => w.category === "household");
+const animalWords = vocabulary.filter((w) => w.category === "animal");
+const colorWords = vocabulary.filter((w) => w.category === "color");
 
 export const courses: Course[] = [
   {
@@ -238,6 +272,130 @@ export const courses: Course[] = [
               buildAssistChallenge(householdWords.find((w) => w.english === "Bed")!, 3, "lesson_2_3"),
               buildListeningChallenge(householdWords.find((w) => w.english === "Chair")!, 4, "lesson_2_3"),
               buildSelectChallenge(householdWords.find((w) => w.english === "Knife")!, 5, "lesson_2_3"),
+            ],
+          },
+        ],
+      },
+      {
+        id: "unit_3",
+        courseId: "course_ogbia",
+        title: "Animals",
+        description: "Learn the names of animals in Ogbia",
+        order: 3,
+        color: "#FF9600",
+        lessons: [
+          {
+            id: "lesson_3_1",
+            unitId: "unit_3",
+            title: "Domestic Animals",
+            order: 1,
+            challenges: [
+              buildSelectChallenge(animalWords.find((w) => w.english === "Dog")!, 1, "lesson_3_1"),
+              buildAssistChallenge(animalWords.find((w) => w.english === "Cat")!, 2, "lesson_3_1"),
+              buildSelectChallenge(animalWords.find((w) => w.english === "Cow")!, 3, "lesson_3_1"),
+              buildListeningChallenge(animalWords.find((w) => w.english === "Sheep")!, 4, "lesson_3_1"),
+              buildAssistChallenge(animalWords.find((w) => w.english === "Male Goat")!, 5, "lesson_3_1"),
+            ],
+          },
+          {
+            id: "lesson_3_2",
+            unitId: "unit_3",
+            title: "More Domestic Animals",
+            order: 2,
+            challenges: [
+              buildSelectChallenge(animalWords.find((w) => w.english === "Female Goat")!, 1, "lesson_3_2"),
+              buildListeningChallenge(animalWords.find((w) => w.english === "Dog")!, 2, "lesson_3_2"),
+              buildAssistChallenge(animalWords.find((w) => w.english === "Cow")!, 3, "lesson_3_2"),
+              buildSelectChallenge(animalWords.find((w) => w.english === "Cat")!, 4, "lesson_3_2"),
+              buildListeningChallenge(animalWords.find((w) => w.english === "Sheep")!, 5, "lesson_3_2"),
+            ],
+          },
+          {
+            id: "lesson_3_3",
+            unitId: "unit_3",
+            title: "Wild Animals",
+            order: 3,
+            challenges: [
+              buildSelectChallenge(animalWords.find((w) => w.english === "Elephant")!, 1, "lesson_3_3"),
+              buildAssistChallenge(animalWords.find((w) => w.english === "Monkey")!, 2, "lesson_3_3"),
+              buildListeningChallenge(animalWords.find((w) => w.english === "Snake")!, 3, "lesson_3_3"),
+              buildSelectChallenge(animalWords.find((w) => w.english === "Tortoise")!, 4, "lesson_3_3"),
+              buildAssistChallenge(animalWords.find((w) => w.english === "Lizard")!, 5, "lesson_3_3"),
+            ],
+          },
+          {
+            id: "lesson_3_4",
+            unitId: "unit_3",
+            title: "Small Creatures",
+            order: 4,
+            challenges: [
+              buildSelectChallenge(animalWords.find((w) => w.english === "Bird")!, 1, "lesson_3_4"),
+              buildAssistChallenge(animalWords.find((w) => w.english === "Fish")!, 2, "lesson_3_4"),
+              buildListeningChallenge(animalWords.find((w) => w.english === "Butterfly")!, 3, "lesson_3_4"),
+              buildSelectChallenge(animalWords.find((w) => w.english === "Rat")!, 4, "lesson_3_4"),
+              buildAssistChallenge(animalWords.find((w) => w.english === "Fly")!, 5, "lesson_3_4"),
+            ],
+          },
+          {
+            id: "lesson_3_5",
+            unitId: "unit_3",
+            title: "Review: All Animals",
+            order: 5,
+            challenges: [
+              buildListeningChallenge(animalWords.find((w) => w.english === "Elephant")!, 1, "lesson_3_5"),
+              buildSelectChallenge(animalWords.find((w) => w.english === "Millipede")!, 2, "lesson_3_5"),
+              buildAssistChallenge(animalWords.find((w) => w.english === "Bird")!, 3, "lesson_3_5"),
+              buildListeningChallenge(animalWords.find((w) => w.english === "Snake")!, 4, "lesson_3_5"),
+              buildSelectChallenge(animalWords.find((w) => w.english === "Fish")!, 5, "lesson_3_5"),
+            ],
+          },
+        ],
+      },
+      {
+        id: "unit_4",
+        courseId: "course_ogbia",
+        title: "Colors",
+        description: "Learn color names in Ogbia",
+        order: 4,
+        color: "#FF4B4B",
+        lessons: [
+          {
+            id: "lesson_4_1",
+            unitId: "unit_4",
+            title: "Basic Colors",
+            order: 1,
+            challenges: [
+              buildSelectChallenge(colorWords.find((w) => w.english === "Red")!, 1, "lesson_4_1"),
+              buildAssistChallenge(colorWords.find((w) => w.english === "Blue")!, 2, "lesson_4_1"),
+              buildSelectChallenge(colorWords.find((w) => w.english === "Green")!, 3, "lesson_4_1"),
+              buildListeningChallenge(colorWords.find((w) => w.english === "Yellow")!, 4, "lesson_4_1"),
+              buildAssistChallenge(colorWords.find((w) => w.english === "Black")!, 5, "lesson_4_1"),
+            ],
+          },
+          {
+            id: "lesson_4_2",
+            unitId: "unit_4",
+            title: "More Colors",
+            order: 2,
+            challenges: [
+              buildSelectChallenge(colorWords.find((w) => w.english === "White")!, 1, "lesson_4_2"),
+              buildAssistChallenge(colorWords.find((w) => w.english === "Orange")!, 2, "lesson_4_2"),
+              buildListeningChallenge(colorWords.find((w) => w.english === "Purple")!, 3, "lesson_4_2"),
+              buildSelectChallenge(colorWords.find((w) => w.english === "Brown")!, 4, "lesson_4_2"),
+              buildAssistChallenge(colorWords.find((w) => w.english === "Pink")!, 5, "lesson_4_2"),
+            ],
+          },
+          {
+            id: "lesson_4_3",
+            unitId: "unit_4",
+            title: "Review: All Colors",
+            order: 3,
+            challenges: [
+              buildListeningChallenge(colorWords.find((w) => w.english === "Red")!, 1, "lesson_4_3"),
+              buildSelectChallenge(colorWords.find((w) => w.english === "Ash")!, 2, "lesson_4_3"),
+              buildAssistChallenge(colorWords.find((w) => w.english === "Green")!, 3, "lesson_4_3"),
+              buildListeningChallenge(colorWords.find((w) => w.english === "Purple")!, 4, "lesson_4_3"),
+              buildSelectChallenge(colorWords.find((w) => w.english === "Yellow")!, 5, "lesson_4_3"),
             ],
           },
         ],
