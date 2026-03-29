@@ -37,6 +37,21 @@ HOUSEHOLD ITEMS:
 - Pot = O'gbèlè
 - Spoon = Ìngìasì
 
+QUESTION WORDS:
+- Who = aníón
+- Where = akéì
+- What = éré (also éría, éríàbhàr)
+- Why = àtùgàkéré
+- Whose own = zà aníón
+- How = Iteàka
+
+QUESTION SENTENCES:
+- Who is there? = aníón ko ówá ạaró ègèlà?
+- What happened? = èríà kòòpà ììtè à?
+- Why are you angry? = àtùgà nwụ nạ àgámá kẹ éríà?
+- Whose books are these? = àdị̀rì zà ìzènà kì zà aníón?
+- How did it happen? = àtó íte àkà?
+
 When users ask about Ogbia words, provide the translation and pronunciation hints. 
 If asked about words not in your database, let them know you're still learning and that more words will be added soon.
 Provide cultural context about the Ogbia people when relevant.
@@ -198,6 +213,12 @@ function handleLocalResponse(messages: { role: string; content: string }[]) {
     plate: "Èfèrè",
     pot: "O'gbèlè",
     spoon: "Ìngìasì",
+    who: "aníón",
+    where: "akéì",
+    what: "éré",
+    why: "àtùgàkéré",
+    "whose own": "zà aníón",
+    how: "Iteàka",
   };
 
   // Check if asking about a specific word

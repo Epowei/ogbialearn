@@ -8,7 +8,7 @@ import { VocabularyWord, Course } from "./schema";
 // ---- Audio Base URL ----
 // Local dev: serves from /public/audio/ (default)
 // Production: set NEXT_PUBLIC_AUDIO_BASE_URL in Vercel env vars
-const AUDIO_BASE = process.env.NEXT_PUBLIC_AUDIO_BASE_URL || "audio/audio";
+const AUDIO_BASE = process.env.NEXT_PUBLIC_AUDIO_BASE_URL || "/audio";
 
 function audioUrl(filename: string): string {
   return `${AUDIO_BASE}/${filename}`;
@@ -69,6 +69,21 @@ export const vocabulary: VocabularyWord[] = [
   { id: "word_red", english: "Red", ogbia: "ọḅáḅám", audioSrc: audioUrl("colors/red.mp3"), category: "color" },
   { id: "word_white", english: "White", ogbia: "ọḅáḅá", audioSrc: audioUrl("colors/white.mp3"), category: "color" },
   { id: "word_yellow", english: "Yellow", ogbia: "ạḅekẹ̀", audioSrc: audioUrl("colors/yellow.mp3"), category: "color" },
+
+  // Question Words
+  { id: "word_who", english: "Who", ogbia: "aníón", audioSrc: audioUrl("questions/who.mp3"), category: "general" },
+  { id: "word_where", english: "Where", ogbia: "akéì", audioSrc: audioUrl("questions/where.mp3"), category: "general" },
+  { id: "word_what", english: "What", ogbia: "éré", audioSrc: audioUrl("questions/what.mp3"), category: "general" },
+  { id: "word_why", english: "Why", ogbia: "àtùgàkéré", audioSrc: audioUrl("questions/why.mp3"), category: "general" },
+  { id: "word_whose_own", english: "Whose own", ogbia: "zà aníón", audioSrc: audioUrl("questions/whose_own.mp3"), category: "general" },
+  { id: "word_how", english: "How", ogbia: "Iteàka", audioSrc: audioUrl("questions/how.mp3"), category: "general" },
+
+  // Question Sentences
+  { id: "word_who_is_there", english: "Who is there?", ogbia: "aníón ko ówá ạaró ègèlà?", audioSrc: audioUrl("questions/who_is_there.mp3"), category: "general" },
+  { id: "word_what_happened", english: "What happened?", ogbia: "èríà kòòpà ììtè à?", audioSrc: audioUrl("questions/what_happened.mp3"), category: "general" },
+  { id: "word_why_are_you_angry", english: "Why are you angry?", ogbia: "àtùgà nwụ nạ àgámá kẹ éríà?", audioSrc: audioUrl("questions/why_are_you_angry.mp3"), category: "general" },
+  { id: "word_whose_books", english: "Whose books are these?", ogbia: "àdị̀rì zà ìzènà kì zà aníón?", audioSrc: audioUrl("questions/whose_books_are_these.mp3"), category: "general" },
+  { id: "word_how_did_it_happen", english: "How did it happen?", ogbia: "àtó íte àkà?", audioSrc: audioUrl("questions/how_did_it_happen.mp3"), category: "general" },
 ];
 
 // Helper: get random wrong options from vocabulary
@@ -157,6 +172,7 @@ const bodyWords = vocabulary.filter((w) => w.category === "body");
 const householdWords = vocabulary.filter((w) => w.category === "household");
 const animalWords = vocabulary.filter((w) => w.category === "animal");
 const colorWords = vocabulary.filter((w) => w.category === "color");
+const questionWords = vocabulary.filter((w) => w.category === "general");
 
 export const courses: Course[] = [
   {
@@ -396,6 +412,68 @@ export const courses: Course[] = [
               buildAssistChallenge(colorWords.find((w) => w.english === "Green")!, 3, "lesson_4_3"),
               buildListeningChallenge(colorWords.find((w) => w.english === "Purple")!, 4, "lesson_4_3"),
               buildSelectChallenge(colorWords.find((w) => w.english === "Yellow")!, 5, "lesson_4_3"),
+            ],
+          },
+        ],
+      },
+      {
+        id: "unit_5",
+        courseId: "course_ogbia",
+        title: "Question Words",
+        description: "Learn how to ask questions in Ogbia",
+        order: 5,
+        color: "#1CB0F6",
+        lessons: [
+          {
+            id: "lesson_5_1",
+            unitId: "unit_5",
+            title: "Basic Question Words",
+            order: 1,
+            challenges: [
+              buildSelectChallenge(questionWords.find((w) => w.english === "Who")!, 1, "lesson_5_1"),
+              buildAssistChallenge(questionWords.find((w) => w.english === "What")!, 2, "lesson_5_1"),
+              buildSelectChallenge(questionWords.find((w) => w.english === "Where")!, 3, "lesson_5_1"),
+              buildListeningChallenge(questionWords.find((w) => w.english === "Why")!, 4, "lesson_5_1"),
+              buildAssistChallenge(questionWords.find((w) => w.english === "How")!, 5, "lesson_5_1"),
+            ],
+          },
+          {
+            id: "lesson_5_2",
+            unitId: "unit_5",
+            title: "More Question Words",
+            order: 2,
+            challenges: [
+              buildSelectChallenge(questionWords.find((w) => w.english === "Whose own")!, 1, "lesson_5_2"),
+              buildListeningChallenge(questionWords.find((w) => w.english === "Who")!, 2, "lesson_5_2"),
+              buildAssistChallenge(questionWords.find((w) => w.english === "Why")!, 3, "lesson_5_2"),
+              buildSelectChallenge(questionWords.find((w) => w.english === "How")!, 4, "lesson_5_2"),
+              buildListeningChallenge(questionWords.find((w) => w.english === "What")!, 5, "lesson_5_2"),
+            ],
+          },
+          {
+            id: "lesson_5_3",
+            unitId: "unit_5",
+            title: "Question Sentences",
+            order: 3,
+            challenges: [
+              buildSelectChallenge(questionWords.find((w) => w.english === "Who is there?")!, 1, "lesson_5_3"),
+              buildAssistChallenge(questionWords.find((w) => w.english === "What happened?")!, 2, "lesson_5_3"),
+              buildListeningChallenge(questionWords.find((w) => w.english === "Why are you angry?")!, 3, "lesson_5_3"),
+              buildSelectChallenge(questionWords.find((w) => w.english === "Whose books are these?")!, 4, "lesson_5_3"),
+              buildAssistChallenge(questionWords.find((w) => w.english === "How did it happen?")!, 5, "lesson_5_3"),
+            ],
+          },
+          {
+            id: "lesson_5_4",
+            unitId: "unit_5",
+            title: "Review: All Questions",
+            order: 4,
+            challenges: [
+              buildListeningChallenge(questionWords.find((w) => w.english === "Where")!, 1, "lesson_5_4"),
+              buildSelectChallenge(questionWords.find((w) => w.english === "What happened?")!, 2, "lesson_5_4"),
+              buildAssistChallenge(questionWords.find((w) => w.english === "Whose own")!, 3, "lesson_5_4"),
+              buildListeningChallenge(questionWords.find((w) => w.english === "Who is there?")!, 4, "lesson_5_4"),
+              buildSelectChallenge(questionWords.find((w) => w.english === "How did it happen?")!, 5, "lesson_5_4"),
             ],
           },
         ],
