@@ -46,7 +46,7 @@ export function ChallengeCard({
       }, 600);
       return () => clearTimeout(timer);
     }
-  }, [status, selectedOption?.id, challenge.id]);
+  },  [status, selectedOption?.id, selectedOption?.audioSrc, challenge.id, challenge.options]);
 
   return (
     <div className="w-full">
